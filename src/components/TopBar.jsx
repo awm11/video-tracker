@@ -1,3 +1,4 @@
+import { BrandLogo } from '../Branding.jsx';
 import { useEffect, useRef } from 'react';
 
 const STEPS = [[1, 'Video'], [2, 'Scale'], [3, 'Track']];
@@ -14,7 +15,7 @@ export default function TopBar({ step, loaded, onStep, onUndo, onRedo, onCopy, o
 
   return (
     <header className="top">
-      <div className="brand">📹 Video Tracker</div>
+      <div className="brand has-logo"><BrandLogo />Video Tracker</div>
       <nav className="steps" aria-label="Steps">
         {STEPS.map(([n, name]) => (
           <button key={n} className={step === n ? 'on' : ''} disabled={!loaded && n > 1} onClick={() => onStep(n)}>

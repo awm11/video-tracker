@@ -1,3 +1,4 @@
+import { SiteFooter } from './Branding.jsx';
 // Video Tracker — app shell. Holds the project state, undo history, video
 // element and frame navigation, and passes actions down to the components.
 import { useEffect, useRef, useState } from 'react';
@@ -532,6 +533,7 @@ export default function App() {
         className="sr"
         onChange={(e) => { const f = e.target.files[0]; e.target.value = ''; if (f) openProjectFile(f); }}
       />
+      <SiteFooter />
       {modalEl}
       {toastEl}
     </>
