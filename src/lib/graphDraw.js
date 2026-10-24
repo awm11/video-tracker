@@ -2,7 +2,7 @@
 // so clicks on the graph can jump to that frame.
 import { niceTicks } from './maths.js';
 
-const FONT = '"Atkinson Hyperlegible", system-ui, sans-serif';
+const FONT = 'Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif';
 
 export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, emptyMsg }) {
   const dpr = window.devicePixelRatio || 1;

@@ -26,7 +26,7 @@ npm run preview
 
 ## Structure
 
-- `index.html` — Vite entry HTML (loads the font and `src/main.jsx`).
+- `index.html` — Vite entry HTML (loads `src/main.jsx`). The app uses Arial, the typeface of UK exam papers, so no web fonts are downloaded.
 - `src/main.jsx` — React root, wrapped in an error boundary so a bug never leaves a blank page.
 - `src/App.jsx` — app shell: project state, undo/redo, loading videos, frame stepping, autosave, keyboard shortcuts.
 - `src/components/`

@@ -34,7 +34,7 @@ function VideoStep({ V, S, a }) {
   return (
     <>
       <div className="row">
-        <span>✅ <b>{V.name}</b> &nbsp;<span className="tip">{fmt(V.duration, 3)} s · {V.frames} frames</span></span>
+        <span>Video loaded: <b>{V.name}</b> &nbsp;<span className="tip">{fmt(V.duration, 3)} s · {V.frames} frames</span></span>
         <button className="btn small" onClick={a.chooseVideo}>Choose a different video</button>
       </div>
       <div className="row">
