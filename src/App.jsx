@@ -152,7 +152,7 @@ export default function App() {
     if (!ok) {
       setBusy(null);
       try { vid.removeAttribute('src'); vid.load(); URL.revokeObjectURL(url); } catch { /* ignore */ }
-      ask('This video can’t be opened', <CodecHelp file={file} />);
+      ask('This video won’t open here 😕', <CodecHelp file={file} />);
       return;
     }
     setBusy('Measuring the frame rate…');
@@ -172,7 +172,7 @@ export default function App() {
         const n = pointCount(prev);
         if (n > 0 || prev.scale.confirmed) {
           const { choice } = await ask(
-            'Continue previous work?',
+            'Welcome back 👋',
             <>
               <p>You’ve worked on this video before{n ? ` (${n} point${n === 1 ? '' : 's'} tracked)` : ''}.</p>
               <p>Do you want to carry on where you left off?</p>
@@ -206,7 +206,7 @@ export default function App() {
     const src = sourceObj(R.current.S, o);
     if (o.type === 'angle' && !o.vertex) {
       commit((s) => { objById(s, s.active).vertex = vp; }, { undoable });
-      toast(src ? `Pivot set. The angle now follows ${src.name}’s points.` : 'Pivot set. Now click the moving end in each frame.', 3500);
+      toast(src ? `Pivot set ✓  The angle now follows ${src.name}’s points.` : 'Pivot set ✓  Now click the moving end in each frame.', 3500);
       return;
     }
     if (src) {
@@ -217,7 +217,7 @@ export default function App() {
     commit((s) => { objById(s, s.active).pts[f] = vp; }, { undoable });
     const nf = f + R.current.S.advance;
     if (nf <= R.current.V.frames - 1) gotoFrame(nf);
-    else toast('End of video reached.');
+    else toast('That was the last frame 🎉');
   };
 
   /* ---------- project files & export ---------- */
@@ -230,7 +230,7 @@ export default function App() {
   const copyData = async () => {
     if (!hasData(R.current.S)) { toast('Track some points first.'); return; }
     await copyText(toTSV(buildTable(R.current.S)));
-    toast('Data copied. Paste into Excel or Google Sheets.');
+    toast('Copied ✓  Now paste into Excel or Google Sheets.');
   };
   const saveProject = () => {
     const V0 = R.current.V;
@@ -265,7 +265,7 @@ export default function App() {
     setS(s);
     setStep(3);
     gotoFrame(s.frame0);
-    toast('Project opened.');
+    toast('Project opened ✓');
   };
   const clearPoints = async () => {
     if (!hasData(R.current.S)) { toast('There are no points to clear.'); return; }

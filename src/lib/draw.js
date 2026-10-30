@@ -30,7 +30,7 @@ function circle(ctx, p, r, fill, stroke, w = 2) {
 }
 function label(ctx, text, p, color = '#fff', bg = 'rgba(0,0,0,.65)') {
   ctx.save();
-  ctx.font = '700 13px Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif';
+  ctx.font = '700 14px "Atkinson Hyperlegible", system-ui, sans-serif';
   const w = ctx.measureText(text).width + 12;
   ctx.fillStyle = bg;
   ctx.beginPath();

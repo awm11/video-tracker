@@ -16,7 +16,7 @@ export default function GraphPanel({ V, S, frame, onJump, onGraphChange, onGraph
   if (!V.loaded) {
     return (
       <aside className="graphs" id="graphPane">
-        <div className="placeholder">Graphs will appear here as you track.</div>
+        <div className="placeholder">📈<br />Your graphs will appear here<br />as you track.</div>
       </aside>
     );
   }
@@ -101,7 +101,7 @@ function GraphCard({ g, o, r, S, frame, onJump, onChange, onRemove }) {
   };
 
   let warn = null;
-  if (o.type === 'point' && !S.scale.confirmed) warn = 'Scale not set: distances are not yet correct. Go to step 2.';
+  if (o.type === 'point' && !S.scale.confirmed) warn = '⚠ The scale hasn’t been set yet, so distances are wrong. Go to step 2.';
   else if (o.type === 'angle' && !o.vertex) warn = 'Click the pivot point on the video first.';
 
   const options = varsFor(o).map(([k, label, u]) => <option key={k} value={k}>{label}{u ? ` (${u})` : ''}</option>);
