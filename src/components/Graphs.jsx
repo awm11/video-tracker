@@ -16,7 +16,7 @@ export default function GraphPanel({ V, S, frame, onJump, onGraphChange, onGraph
   if (!V.loaded) {
     return (
       <aside className="graphs" id="graphPane">
-        <div className="placeholder">📈<br />Your graphs will appear here<br />as you track.</div>
+        <div className="placeholder">Graphs will appear here as you track.</div>
       </aside>
     );
   }
@@ -101,7 +101,7 @@ function GraphCard({ g, o, r, S, frame, onJump, onChange, onRemove }) {
   };
 
   let warn = null;
-  if (o.type === 'point' && !S.scale.confirmed) warn = '⚠ The scale hasn’t been set yet, so distances are wrong. Go to step 2.';
+  if (o.type === 'point' && !S.scale.confirmed) warn = 'Scale not set: distances are not yet correct. Go to step 2.';
   else if (o.type === 'angle' && !o.vertex) warn = 'Click the pivot point on the video first.';
 
   const options = varsFor(o).map(([k, label, u]) => <option key={k} value={k}>{label}{u ? ` (${u})` : ''}</option>);
@@ -151,28 +151,28 @@ function FitText({ g, fit, xUnit, yUnit }) {
   if (fit.kind === 'lin') {
     const gu = unitRatio(yUnit, xUnit);
     eq = `${ys} = ${fmt(fit.m)} ${xs}${signed(fit.c)}  ·  gradient = ${fmt(fit.m)}${gu ? ` ${gu}` : ''}`;
-    if (g.x === 't' && ['x', 'y'].includes(g.y)) hint = `→ velocity ≈ ${fmt(fit.m)} m/s`;
+    if (g.x === 't' && ['x', 'y'].includes(g.y)) hint = `velocity ≈ ${fmt(fit.m)} m/s`;
     if (g.x === 't' && ['vx', 'vy'].includes(g.y)) hint = `average acceleration ≈ ${fmt(fit.m)} m/s²`;
-    if (g.x === 't2' && ['x', 'y'].includes(g.y)) hint = `→ if it started from rest, acceleration ≈ 2 × gradient = ${fmt(2 * fit.m)} m/s²`;
-    if (g.x === 't' && g.y === 'theta') hint = `→ angular velocity ≈ ${fmt(fit.m)} °/s`;
+    if (g.x === 't2' && ['x', 'y'].includes(g.y)) hint = `if it started from rest, acceleration ≈ 2 × gradient = ${fmt(2 * fit.m)} m/s²`;
+    if (g.x === 't' && g.y === 'theta') hint = `angular velocity ≈ ${fmt(fit.m)} °/s`;
   } else if (fit.kind === 'quad') {
     eq = `${ys} = ${fmt(fit.a)} ${xs}²${signed(fit.b)} ${xs}${signed(fit.c)}`;
     if (g.x === 't' && ['x', 'y'].includes(g.y)) hint = `average acceleration ≈ 2 × ${fmt(fit.a)} = ${fmt(2 * fit.a)} m/s²`;
   } else if (fit.kind === 'exp') {
     eq = `${ys} = ${fmt(fit.A)} e^(${fmt(fit.k)} ${xs})${signed(fit.C)}`;
     const per = xUnit || 'units';
-    if (fit.k < 0) hint = `→ time constant = 1/${fmt(-fit.k)} = ${fmt(-1 / fit.k)} ${per}, half-life = ${fmt(Math.LN2 / -fit.k)} ${per}`
+    if (fit.k < 0) hint = `time constant = 1/${fmt(-fit.k)} = ${fmt(-1 / fit.k)} ${per}, half-life = ${fmt(Math.LN2 / -fit.k)} ${per}`
       + `${Math.abs(fit.C) > 1e-9 ? `; levels off at ${fmt(fit.C)}${yUnit ? ` ${yUnit}` : ''}` : ''}`;
-    else if (fit.k > 0) hint = `→ doubles every ln2/${fmt(fit.k)} = ${fmt(Math.LN2 / fit.k)} ${per}`;
+    else if (fit.k > 0) hint = `doubles every ln2/${fmt(fit.k)} = ${fmt(Math.LN2 / fit.k)} ${per}`;
   } else if (fit.kind === 'sin' || fit.kind === 'dsin') {
     const damp = fit.kind === 'dsin' ? ` e^(${fmt(-fit.g)} ${xs})` : '';
     eq = `${ys} = ${fmt(fit.A)}${damp} sin(${fmt(fit.w)} ${xs}${signed(fit.phi)})${signed(fit.C)}`;
     const T = (2 * Math.PI) / fit.w;
     if (g.x === 't') {
-      hint = `→ period T = 2π/${fmt(fit.w)} = ${fmt(T)} s, frequency = ${fmt(1 / T)} Hz`;
+      hint = `period T = 2π/${fmt(fit.w)} = ${fmt(T)} s, frequency = ${fmt(1 / T)} Hz`;
       if (fit.kind === 'dsin' && fit.g > 0) hint += `; amplitude halves every ${fmt(Math.LN2 / fit.g)} s`;
     } else {
-      hint = `→ repeats every ${fmt(T)}${xUnit ? ` ${xUnit}` : ''}`;
+      hint = `repeats every ${fmt(T)}${xUnit ? ` ${xUnit}` : ''}`;
     }
   }
   return (

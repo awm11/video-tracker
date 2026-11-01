@@ -24,7 +24,7 @@ export default class ErrorBoundary extends React.Component {
     return (
       <div className="crash">
         <div className="crash-card">
-          <h1>Sorry — something went wrong 😕</h1>
+          <h1>Something went wrong</h1>
           <p>Your tracking has been saved in this browser.</p>
           <p>Reload the page and open the same video again — it will offer to carry on where you left off.</p>
           <div className="btns">

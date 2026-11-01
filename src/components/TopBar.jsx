@@ -26,17 +26,17 @@ export default function TopBar({ step, loaded, onStep, onUndo, onRedo, onCopy, o
       <div className="actions">
         <button className="btn" disabled={!loaded} onClick={onUndo} title="Undo (Ctrl+Z)">↶ Undo</button>
         <button className="btn" disabled={!loaded} onClick={onCopy} title="Copy the data so you can paste it into Excel or Google Sheets">Copy data</button>
-        <button className="btn primary" disabled={!loaded} onClick={onExport}>⬇ Download CSV</button>
+        <button className="btn primary" disabled={!loaded} onClick={onExport}>Download CSV</button>
         <details className="more" ref={menu}>
           <summary className="btn">More ▾</summary>
           <div className="menu">
-            <button onClick={item(onSaveProject)}>💾 Save project file</button>
-            <button onClick={item(onOpenProject)}>📂 Open project file…</button>
+            <button onClick={item(onSaveProject)}>Save project file</button>
+            <button onClick={item(onOpenProject)}>Open project file…</button>
             <hr />
             <button onClick={item(onRedo)}>↷ Redo</button>
-            <button onClick={item(onClear)}>🗑 Clear all tracked points</button>
+            <button onClick={item(onClear)}>Clear all tracked points</button>
             <hr />
-            <button onClick={item(onHelp)}>❓ Help &amp; keyboard shortcuts</button>
+            <button onClick={item(onHelp)}>Help and keyboard shortcuts</button>
           </div>
         </details>
       </div>

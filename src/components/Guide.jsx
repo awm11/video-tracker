@@ -34,7 +34,7 @@ function VideoStep({ V, S, a }) {
   return (
     <>
       <div className="row">
-        <span>✅ <b>{V.name}</b> &nbsp;<span className="tip">{fmt(V.duration, 3)} s · {V.frames} frames</span></span>
+        <span>Video loaded: <b>{V.name}</b> &nbsp;<span className="tip">{fmt(V.duration, 3)} s · {V.frames} frames</span></span>
         <button className="btn small" onClick={a.chooseVideo}>Choose a different video</button>
       </div>
       <div className="row">
@@ -94,7 +94,7 @@ function TrackStep({ S, a }) {
   else if (o?.type === 'angle') instr = <><b>Click the moving end</b> in each frame — the dashed line shows the angle before you click. The video moves on by itself. Drag the square to move the pivot.</>;
   else if (o) {
     const what = o.name.toLowerCase() === 'ball' ? 'ball' : o.name;
-    instr = <><b>Click the centre of the {what}.</b> The video moves on by itself. Mistake? Drag the mark, or press ◀ to go back.</>;
+    instr = <><b>Click the centre of the {what}.</b> The video moves on by itself. Mistake? Drag the mark, or press ← to go back.</>;
   }
   return (
     <>

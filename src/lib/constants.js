@@ -1,5 +1,5 @@
 // Colours used for each tracked object, in order.
-export const COLORS = ['#e11d48', '#2563eb', '#16a34a', '#9333ea', '#ea580c', '#0891b2'];
+export const COLORS = ['#f76707', '#1c7ed6', '#2f9e44', '#d6336c', '#7048e8', '#1098ad'];
 
 // Units the scale length can be typed in. Data are always output in metres.
 export const UNITS = { m: 1, cm: 0.01, mm: 0.001 };

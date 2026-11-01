@@ -159,7 +159,6 @@ export default function VideoStage({
       />
       {!V.loaded && (
         <div className={`drop${dragOver ? ' dragging' : ''}`}>
-          <div style={{ fontSize: 42 }}>🎬</div>
           <div><b>Drop a video here</b> or</div>
           <button className="btn primary big" onClick={onChooseVideo}>Choose a video</button>
           <div className="hint">Your video stays on this device. Nothing is uploaded.</div>

@@ -2,7 +2,7 @@
 // so clicks on the graph can jump to that frame.
 import { niceTicks } from './maths.js';
 
-const FONT = '"Atkinson Hyperlegible", system-ui, sans-serif';
+const FONT = 'Arial, "Helvetica Neue", Helvetica, "Liberation Sans", sans-serif';
 
 export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, emptyMsg }) {
   const dpr = window.devicePixelRatio || 1;
@@ -17,7 +17,7 @@ export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, empt
   g.clearRect(0, 0, W, H);
 
   if (!pts.length) {
-    g.fillStyle = '#5d6678';
+    g.fillStyle = '#4e5763';
     g.font = `15px ${FONT}`;
     g.textAlign = 'center'; g.textBaseline = 'middle';
     g.fillText(emptyMsg, W / 2, H / 2);
@@ -38,8 +38,8 @@ export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, empt
   const xt = niceTicks(x0, x1, Math.max(3, Math.floor(pw / 70)));
   const yt = niceTicks(y0, y1, Math.max(3, Math.floor(ph / 40)));
   g.font = `13px ${FONT}`;
-  g.fillStyle = '#5d6678';
-  g.strokeStyle = '#eceff4';
+  g.fillStyle = '#4e5763';
+  g.strokeStyle = '#e5e9ee';
   g.lineWidth = 1;
   g.textAlign = 'center'; g.textBaseline = 'top';
   xt.ticks.forEach((v) => {
@@ -54,15 +54,15 @@ export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, empt
     g.fillText(v.toFixed(yt.dec), L - 5, Y);
   });
   // zero lines
-  g.strokeStyle = '#9aa3b2';
+  g.strokeStyle = '#8a94a1';
   if (x0 < 0 && x1 > 0) { const X = Math.round(sx(0)) + 0.5; g.beginPath(); g.moveTo(X, T); g.lineTo(X, T + ph); g.stroke(); }
   if (y0 < 0 && y1 > 0) { const Y = Math.round(sy(0)) + 0.5; g.beginPath(); g.moveTo(L, Y); g.lineTo(L + pw, Y); g.stroke(); }
-  g.strokeStyle = '#c3c9d4';
+  g.strokeStyle = '#6b7480';
   g.strokeRect(L + 0.5, T + 0.5, pw, ph);
 
   // axis titles
-  g.fillStyle = '#1c2230';
-  g.font = `700 13px ${FONT}`;
+  g.fillStyle = '#15191e';
+  g.font = `13px ${FONT}`;
   g.textAlign = 'center'; g.textBaseline = 'bottom';
   g.fillText(xTitle, L + pw / 2, H - 2);
   g.save();
@@ -73,7 +73,7 @@ export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, empt
   g.save();
   g.beginPath(); g.rect(L, T, pw, ph); g.clip();
   if (fit) {
-    g.strokeStyle = '#1c2230'; g.lineWidth = 1.8; g.setLineDash([6, 4]);
+    g.strokeStyle = '#15191e'; g.lineWidth = 1.8; g.setLineDash([6, 4]);
     g.beginPath();
     // plenty of samples so fast oscillations draw smoothly; skip off-scale values
     const N = Math.max(200, Math.round(pw * 1.5));
@@ -94,7 +94,7 @@ export function drawGraph(canvas, { pts, fit, color, xTitle, yTitle, frame, empt
   const cur = pts.find((p) => p.f === frame);
   if (cur) {
     g.beginPath(); g.arc(sx(cur.x), sy(cur.y), 7.5, 0, Math.PI * 2);
-    g.strokeStyle = '#1c2230'; g.lineWidth = 2; g.stroke();
+    g.strokeStyle = '#15191e'; g.lineWidth = 2; g.stroke();
   }
   g.restore();
   return hits;
